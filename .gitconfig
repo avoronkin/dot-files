@@ -1,0 +1,13 @@
+[color]
+	diff = auto
+	branch = auto
+	interactive = auto
+	status = auto
+
+[user]
+	email = admin@elasticweb.ru
+	name = Alexandr Voronkin
+[core]
+	autocrlf = input
+[push]
+	default = simple

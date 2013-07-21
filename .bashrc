@@ -1,0 +1,33 @@
+
+
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+if [ -f ~/.git-completion.sh ]; then
+ source ~/.git-completion.sh
+fi
+
+if [ -f ~/.git-prompt.sh ]; then
+ source ~/.git-prompt.sh
+ 
+ GIT_PS1_SHOWDIRTYSTATE=1
+ GIT_PS1_SHOWSTASHSTATE=1
+ GIT_PS1_SHOWUNTRACKEDFILES=1
+ # Explicitly unset color (default anyhow). Use 1 to set it.
+ GIT_PS1_SHOWCOLORHINTS=1
+ GIT_PS1_DESCRIBE_STYLE="branch"
+ GIT_PS1_SHOWUPSTREAM="auto git"
+
+ PROMPT_COMMAND='__git_ps1 "\u@\h:\w" "\\\$ "'
+fi
+
+if [ -f ~/.bash_aliases ]; then
+ . ~/.bash_aliases
+fi
+
+export WORKON_HOME=$HOME/.virtualenvs
+source /usr/bin/virtualenvwrapper.sh
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+CHROME_BIN=/usr/bin/chromium
