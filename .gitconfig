@@ -11,3 +11,6 @@
 	autocrlf = input
 [push]
 	default = simple
+	
+[alias]
+	rmbranch = "!f(){ git branch -d ${1} && git push origin --delete ${1}; };f"
