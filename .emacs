@@ -1,4 +1,3 @@
-
 (add-to-list 'load-path "~/.emacs.d/")
 (add-to-list 'load-path "~/.emacs.d/plugins/")
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
@@ -12,7 +11,11 @@
     '(setq mumamo-per-buffer-local-vars
            (delq 'buffer-file-name mumamo-per-buffer-local-vars))))
            
-           
+(require 'emmet-mode)
+(add-hook 'nxhtml-mode-hook 'emmet-mode)
+;;(add-hook 'css-mode-hook  'emmet-mode)
+
+
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 
 (add-to-list 'load-path "~/.emacs.d/plugins/helm/")
