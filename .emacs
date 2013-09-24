@@ -1,28 +1,34 @@
+
 (add-to-list 'load-path "~/.emacs.d/")
 (add-to-list 'load-path "~/.emacs.d/plugins/")
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 
+
+;;http://ourcomments.org/Emacs/nXhtml/doc/nxhtml.html
 (load "~/.emacs.d/plugins/nxhtml/autostart.el")
-;; Workaround the annoying warnings:
-;;    Warning (mumamo-per-buffer-local-vars):
-;;    Already 'permanent-local t: buffer-file-name
-(when  (and (>= emacs-major-version 24) (>= emacs-minor-version 2)) 
-  (eval-after-load "mumamo"
-    '(setq mumamo-per-buffer-local-vars
-           (delq 'buffer-file-name mumamo-per-buffer-local-vars))))
-           
+
+;;https://github.com/smihica/emmet-mode
 (require 'emmet-mode)
 (add-hook 'nxhtml-mode-hook 'emmet-mode)
 ;;(add-hook 'css-mode-hook  'emmet-mode)
 
 
+;;http://www.emacswiki.org/emacs/Js2Mode
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 
+;;https://github.com/illusori/emacs-flymake-cursor
+(eval-after-load 'flymake '(require 'flymake-cursor))
+;;http://www.emacswiki.org/emacs/FlymakeJavaScript
+(require 'flymake-jslint)
+    (add-hook 'js2-mode-hook 'flymake-jslint-load)
+
+
+;;https://github.com/emacs-helm/helm
 (add-to-list 'load-path "~/.emacs.d/plugins/helm/")
 (require 'helm-config)
 (helm-mode 1)
-(global-set-key (kbd "C-x C-f") 'helm-find-files)
-(global-set-key (kbd "C-c h") 'helm-mini)
+(global-set-key (kbd "<f6>") 'helm-find-files)
+(global-set-key (kbd "<f5>") 'helm-mini)
 
 
 
@@ -30,15 +36,37 @@
 (setq-default tab-width 2)
 (global-linum-mode t)
 (global-font-lock-mode t)
+(show-paren-mode 1)
+(define-key global-map (kbd "RET") 'newline-and-indent)
 
+;;http://www.emacswiki.org/emacs/whitespace.el
 (require 'whitespace)
 (global-whitespace-mode t)
 (setq-default indent-tabs-mode nil)
 
-(show-paren-mode 1) 
-(add-hook 'lisp-mode-hook '(lambda () 
-      (local-set-key (kbd "RET") 'newline-and-indent)))
-      
+
+;;http://cx4a.org/software/auto-complete/
+(add-to-list 'load-path "/home/alex/.emacs.d/plugins/auto-complete")
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories "/home/alex/.emacs.d/plugins/auto-complete/ac-dict")
+(setq-default ac-sources (add-to-list 'ac-sources 'ac-source-dictionary))
+(global-auto-complete-mode t)
+; Start auto-completion after 2 characters of a word
+(setq ac-auto-start 2)
+; case sensitivity is important when finding matches
+(setq ac-ignore-case nil)
+
+;;https://github.com/capitaomorte/autopair
+(require 'autopair)
+(autopair-global-mode)
+
+;;https://code.google.com/p/yasnippet/
+;;(add-to-list 'load-path "~/.emacs.d/plugins/yasnippet")
+;;(require 'yasnippet)
+;;(yas/global-mode t)
+;;(setq ac-source-yasnippet nil)
+
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
