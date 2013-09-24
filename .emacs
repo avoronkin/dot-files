@@ -1,4 +1,4 @@
-
+(prefer-coding-system 'utf-8)
 (add-to-list 'load-path "~/.emacs.d/")
 (add-to-list 'load-path "~/.emacs.d/plugins/")
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
