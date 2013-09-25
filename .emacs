@@ -57,8 +57,14 @@
 (global-set-key (kbd "<f5>") 'helm-mini)
 
 
-;заголовок окна
-(setq frame-title-format '("Emacs @ " system-name " %b %+%+ %f"))
+
+
+(when window-system
+  ;заголовок окна
+  (setq frame-title-format '(buffer-file-name "%f" ("%b")))
+  (tooltip-mode -1)
+  (blink-cursor-mode -1))
+
 
 (setq-default tab-width 2)
 ;показывать номера строк
@@ -80,6 +86,9 @@
 ;;http://www.emacswiki.org/emacs/whitespace.el
 (require 'whitespace)
 (global-whitespace-mode t)
+
+;; Highlight current line
+(global-hl-line-mode 1)
 
 ;;(setq whitespace-style (quote (spaces tabs newline trailing space-mark tab-mark newline-mark)))
 (setq whitespace-display-mappings
@@ -179,7 +188,23 @@
 ;; Change padding of the tabs
 ;; we also need to set separator to avoid overlapping tabs by highlighted tabs
 (custom-set-variables
- '(tabbar-separator (quote (0.5))))
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-enabled-themes (quote (monokai)))
+ '(custom-safe-themes (quote ("fa189fcf5074d4964f0a53f58d17c7e360bb8f879bd968ec4a56dc36b0013d29" "eb8701083acffcb4ae592fb78f236b3d5f62cdc841e2b83cefbbfdd4126f205c" default)))
+ '(fringe-mode (quote (nil . 0)) nil (fringe))
+ '(js2-basic-offset 2)
+ '(js2-bounce-indent-p t)
+ '(js2-highlight-level 3)
+ '(longlines-auto-wrap nil)
+ '(show-paren-mode t)
+ '(sr-speedbar-right-side t)
+ '(tabbar-separator (quote (0.5)))
+ '(tool-bar-mode nil)
+ '(uniquify-buffer-name-style (quote forward) nil (uniquify))
+ '(whitespace-line-column 100))
 ;; adding spaces
 (defun tabbar-buffer-tab-label (tab)
   "Return a label for TAB.
@@ -207,27 +232,15 @@ That is, a string used to represent it on the tab bar."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(whitespace-hspace ((t (:background "#3F3F3F" :foreground "#5F5F5F"))))
- '(whitespace-indentation ((t (:background "#3F3F3F" :foreground "#5F5F5F"))))
- '(whitespace-space ((t (:background "#3F3F3F" :foreground "#5F5F5F"))))
- '(whitespace-space-after-tab ((t (:background "#3F3F3F" :foreground "#CC9393"))))
- '(whitespace-space-before-tab ((t (:background "#3F3F3F" :foreground "#DFAF8F"))))
- '(whitespace-tab ((t (:background "#3F3F3F" :foreground "#5F5F5F")))))
+ '(whitespace-empty ((t (:background "#272822" :foreground "firebrick"))))
+ '(whitespace-hspace ((t (:background "#272822" :foreground "#2f2f2f"))))
+ '(whitespace-indentation ((t (:background "#272822" :foreground "#3f3f3f"))))
+ '(whitespace-newline ((t (:foreground "#3f3f3f" :weight normal))))
+ '(whitespace-space ((t (:background "#272822" :foreground "#3f3f3f"))))
+ '(whitespace-space-after-tab ((t (:background "#272822" :foreground "#CC9393"))))
+ '(whitespace-space-before-tab ((t (:background "#272822" :foreground "#DFAF8F"))))
+ '(whitespace-tab ((t (:background "#272822" :foreground "#3f3f3f")))))
 
 
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-enabled-themes (quote (zenburn)))
- '(custom-safe-themes (quote ("eb8701083acffcb4ae592fb78f236b3d5f62cdc841e2b83cefbbfdd4126f205c" default)))
- '(fringe-mode (quote (nil . 0)) nil (fringe))
- '(js2-basic-offset 2)
- '(js2-bounce-indent-p t)
- '(js2-highlight-level 3)
- '(show-paren-mode t)
- '(sr-speedbar-right-side t)
- '(tool-bar-mode nil)
- '(uniquify-buffer-name-style (quote forward) nil (uniquify)))
+
