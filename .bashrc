@@ -1,7 +1,5 @@
 
-
-
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+#[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 if [ -f ~/.git-completion.sh ]; then
  source ~/.git-completion.sh
@@ -25,9 +23,17 @@ if [ -f ~/.bash_aliases ]; then
  . ~/.bash_aliases
 fi
 
-export WORKON_HOME=$HOME/.virtualenvs
-source /usr/bin/virtualenvwrapper.sh
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
-CHROME_BIN=/usr/bin/chromium
+if [ -f /usr/bin/virtualenvwrapper.sh ]; then
+  export WORKON_HOME=$HOME/.virtualenvs
+  . /usr/bin/virtualenvwrapper.sh 
+fi
+
+if [ -f ~/.nvm/nvm.sh ]; then
+  . ~/.nvm/nvm.sh
+fi
+
+#PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+#CHROME_BIN=/usr/bin/chromium
