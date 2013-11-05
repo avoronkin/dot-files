@@ -1,3 +1,4 @@
+alias tmux='tmux -2 attach || tmux -2 new'
 alias ls='ls --color=auto'
 alias ll='ls -l'
 alias la='ls -A'
