@@ -11,6 +11,8 @@
     Bundle 'jl/gundo.vim'
     Bundle 'scrooloose/syntastic'
     Bundle 'scrooloose/nerdtree'
+    Bundle 'Shougo/vimproc.vim'¶
+    Bundle 'Shougo/unite.vim'¶
 
     Bundle 'tpope/vim-unimpaired'
     Bundle 'jelera/vim-javascript-syntax'
@@ -18,7 +20,7 @@
     Bundle 'sjl/gundo.vim' 
     Bundle 'Lokaltog/vim-easymotion' 
     Bundle 'mattn/emmet-vim'
-    Bundle 'kien/ctrlp.vim' 
+
     Bundle 'terryma/vim-multiple-cursors'
     Bundle 'godlygeek/tabular'
     Bundle 'altercation/vim-colors-solarized'
@@ -219,7 +221,7 @@
     set hidden
     autocmd BufWinLeave .* mkview
     autocmd BufWinEnter .* silent loadview
-    nmap <silent> <leader>b :CtrlPBuffer<CR> 
+    
     let g:ctrlp_custom_ignore = { 'dir':  '\v[\/]\.(git|hg|svn|tmp)$'}
     let g:ctrlp_working_path_mode = 'r'
     let g:ctrlp_mruf_exclude = '/tmp/.*\|/temp/.*'
@@ -279,3 +281,19 @@
     endif
 
 " ====== /Tmux ====== }}}
+
+" ======= Unite ====== {{{¶
+276 nnoremap <Leader>f :Unite -start-insert file<CR>¶
+277 nnoremap <Leader>ff :Unite -start-insert file_rec/async<CR>¶
+278 nnoremap <Leader>fr :Unite file_mru<CR>¶
+279 nnoremap <Leader>b :Unite -quick-match buffer<CR>¶
+280 nnoremap <Leader>bb :Unite -start-insert buffer<CR>¶
+281 nnoremap <Leader>g :Unite grep:.<CR>¶
+
+285 let g:unite_split_rule = "botright"¶
+286 let g:unite_source_history_yank_enable = 1¶
+288 let g:unite_force_overwrite_statusline = 0¶
+291 let g:unite_winheight = 10¶
+292
+295 " ======= /Unite ====== }}}¶
+
