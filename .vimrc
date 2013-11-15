@@ -283,17 +283,17 @@
 " ====== /Tmux ====== }}}
 
 " ======= Unite ====== {{{¶
-276 nnoremap <Leader>f :Unite -start-insert file<CR>¶
-277 nnoremap <Leader>ff :Unite -start-insert file_rec/async<CR>¶
-278 nnoremap <Leader>fr :Unite file_mru<CR>¶
-279 nnoremap <Leader>b :Unite -quick-match buffer<CR>¶
-280 nnoremap <Leader>bb :Unite -start-insert buffer<CR>¶
-281 nnoremap <Leader>g :Unite grep:.<CR>¶
+nnoremap <Leader>f :Unite -start-insert file<CR>¶
+nnoremap <Leader>ff :Unite -start-insert file_rec/async<CR>¶
+nnoremap <Leader>fr :Unite file_mru<CR>¶
+nnoremap <Leader>b :Unite -quick-match buffer<CR>¶
+nnoremap <Leader>bb :Unite -start-insert buffer<CR>¶
+nnoremap <Leader>g :Unite grep:.<CR>¶
 
-285 let g:unite_split_rule = "botright"¶
-286 let g:unite_source_history_yank_enable = 1¶
-288 let g:unite_force_overwrite_statusline = 0¶
-291 let g:unite_winheight = 10¶
-292
-295 " ======= /Unite ====== }}}¶
+let g:unite_split_rule = "botright"¶
+let g:unite_source_history_yank_enable = 1¶
+let g:unite_force_overwrite_statusline = 0¶
+let g:unite_winheight = 10¶
+
+" ======= /Unite ====== }}}¶
 
