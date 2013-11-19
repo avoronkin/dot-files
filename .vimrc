@@ -8,7 +8,6 @@
     " let Vundle manage Vundle (required)
     Bundle "gmarik/vundle"
 
-    Bundle 'jl/gundo.vim'
     Bundle 'scrooloose/syntastic'
     Bundle 'scrooloose/nerdtree'
     Bundle 'Shougo/vimproc.vim'¶
@@ -32,12 +31,10 @@
     Bundle 'fholgado/minibufexpl.vim'
     Bundle 'Valloric/YouCompleteMe'
     Bundle 'marijnh/tern_for_vim'
-    Bundle 'skammer/vim-css-color'
-    Bundle 'hail2u/vim-css3-syntax'
+
     Bundle 'MarcWeber/vim-addon-mw-utils'
     Bundle 'tomtom/tlib_vim'
-    Bundle 'garbas/vim-snipmate'
-    Bundle "honza/vim-snippets"
+
 
 
     "Filetype plugin indent on is required by vundle
@@ -59,6 +56,7 @@
     set visualbell                  "No sounds
     set autoread                    "Reload files changed outside vim
     set laststatus=2
+    set mouse=a
 
 " ====== /General Config ====== }}}
 
@@ -226,8 +224,8 @@
     let g:ctrlp_working_path_mode = 'r'
     let g:ctrlp_mruf_exclude = '/tmp/.*\|/temp/.*'
     let g:ctrlp_mruf_relative = 0
-    nnoremap <silent> <Left>   :bn<CR>
-    nnoremap <silent> <Right>  :bp<CR>
+    nnoremap <silent> <Left>   :bp<CR>
+    nnoremap <silent> <Right>  :bn<CR>
     map <Leader>t :MBEToggle<cr> 
 " ====== /Buffers ====== }}}
 
@@ -296,4 +294,40 @@ let g:unite_force_overwrite_statusline = 0
 let g:unite_winheight = 10
 
 " ======= /Unite ====== }}}
+" ======= Airline ====== {{{
+
+"let g:airline_theme=bubblegum
+  let g:airline_powerline_fonts=1
+
+  let g:airline#extensions#tabline#enabled = 1
+
+ if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+  endif
+  
+  " powerline symbols
+  let g:airline_left_sep = ''
+  let g:airline_left_alt_sep = ''
+  let g:airline_right_sep = ''
+  let g:airline_right_alt_sep = ''
+  let g:airline_symbols.branch = ''
+  let g:airline_symbols.readonly = ''
+  let g:airline_symbols.linenr = ''
+
+  let g:airline_mode_map = {
+      \ '__' : '-',
+      \ 'n'  : 'N',
+      \ 'i'  : 'I',
+      \ 'R'  : 'R',
+      \ 'c'  : 'C',
+      \ 'v'  : 'V',
+      \ 'V'  : 'V',
+      \ '' : 'V',
+      \ 's'  : 'S',
+      \ 'S'  : 'S',
+      \ '' : 'S',
+      \ }
+
+
+" ====== /Airline ====== }}} 
 
