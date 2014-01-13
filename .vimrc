@@ -1,4 +1,5 @@
 set encoding=utf-8
+" set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 10
 " ====== Bundle ====== {{{ 
 
     " Filetype off is required by vundle
@@ -24,16 +25,14 @@ set encoding=utf-8
     Bundle 'Lokaltog/vim-easymotion' 
     Bundle 'mattn/emmet-vim'
     Bundle 'terryma/vim-multiple-cursors'
-    Bundle 'godlygeek/tabular'
     Bundle 'Lokaltog/vim-distinguished'
-"   Bundle 'vim-scripts/YankRing.vim'
+    Bundle 'vim-scripts/YankRing.vim'
     Bundle 'Raimondi/delimitMate'
     Bundle 'tpope/vim-fugitive'
     Bundle 'Valloric/YouCompleteMe'
     Bundle 'marijnh/tern_for_vim'
-    Bundle 'MarcWeber/vim-addon-mw-utils'
-    Bundle 'tomtom/tlib_vim'
-    Bundle 'garbas/vim-snipmate'
+    Bundle 'jsx/jsx.vim'
+    Bundle 'SirVer/ultisnips'
 
 
     "Filetype plugin indent on is required by vundle
@@ -55,6 +54,7 @@ set encoding=utf-8
     set visualbell                  "No sounds
     set autoread                    "Reload files changed outside vim
     set laststatus=2
+"    set mouse=a
 
 " ====== /General Config ====== }}}
 
@@ -71,7 +71,6 @@ set encoding=utf-8
         let g:airline_symbols = {}
     endif
      
-    " let alirline_powerline_fonts=1
     
     let g:airline#extensions#tabline#enabled = 1
     let g:airline_theme = 'bubblegum'
@@ -91,36 +90,17 @@ set encoding=utf-8
       \ 'S'  : 'S',
       \ '' : 'S',
       \ }
-  " powerline symbols
-  let g:airline_left_sep = ''
-  let g:airline_left_alt_sep = ''
-  let g:airline_right_sep = ''
-  let g:airline_right_alt_sep = ''
-  let g:airline_symbols.branch = ''
-  let g:airline_symbols.readonly = ''
-  let g:airline_symbols.linenr = ''
 
-
-    " unicode symbols
-    " let g:airline_left_sep = ''
-    " let g:airline_right_sep = ''
-    " let g:airline_symbols.linenr = '¶'
-    " let g:airline_symbols.branch = '⎇'
-    " let g:airline_symbols.paste = 'ρ'
-    " let g:airline_symbols.whitespace = 'Ξ'
-      set ttimeoutlen=50
-
-    " Show syntax highlighting groups for word under cursor
-    nmap <C-S-L> :call <SID>SynStack()<CR>
-    function! <SID>SynStack()
-        if !exists("*synstack")
-            return
-        endif
-        echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
-    endfunc
+    let g:airline_left_sep = ''
+    let g:airline_right_sep = ''
+    let g:airline_symbols.linenr = '¶'
+    let g:airline_symbols.branch = '⎇'
+    let g:airline_symbols.paste = 'ρ'
+    let g:airline_symbols.whitespace = 'Ξ'
+    set ttimeoutlen=150
 
     " Display tabs and trailing spaces visually
-    ""set list listchars=tab:>-,trail:·,eol:¶
+    set list listchars=tab:>-,trail:·,eol:¶
     " Show Invisible Characters
     nmap <Leader><space> :set list!<CR>
 " ====== /Highlighting ====== }}}
@@ -181,6 +161,7 @@ set encoding=utf-8
     set wildignore+=*sass-cache*
     set wildignore+=*DS_Store*
     set wildignore+=*.png,*.jpg,*.gif
+
     let g:ycm_add_preview_to_completeopt=0
     let g:ycm_confirm_extra_conf=0
     set completeopt-=preview
@@ -215,31 +196,17 @@ set encoding=utf-8
     vmap <C-Up> [egv
     vmap <C-Down> ]egv
 
-    inoremap ;; <ESC>
-
-"    nnoremap <silent> <F11> :YRShow<CR>
-
     " let g:EasyMotion_leader_key = '<Leader>'
     " let g:EasyMotion_mapping_f ='<Leader>l'
     " let g:EasyMotion_mapping_F ='<Leader>h'
 
     
-    " imap <C-\> <Plug>snipMateNextOrTrigger
-    " smap <C-\> <Plug>snipMateNextOrTrigger
     
-    nnoremap <F10> :exe ':silent !chromium %'<CR>
 " ====== /Editing ====== }}}
 
 " ====== Formating ====== {{{
 
-    if exists(":Tabularize")
-        nmap <Leader>a= :Tabularize /=<CR>
-        vmap <Leader>a= :Tabularize /=<CR>
-        nmap <Leader>a: :Tabularize /:\zs<CR>
-        vmap <Leader>a: :Tabularize /:\zs<CR>
-    endif
-
-    nnoremap <leader>r :%!js-beautify -j -q -B -f -<CR>
+    nnoremap <leader>r :%!js-beautify -j -q -f <CR>
 
 " ====== /Formating ====== }}}
 
@@ -335,3 +302,12 @@ let g:unite_source_history_yank_enable = 1
 let g:unite_force_overwrite_statusline = 0
 let g:unite_winheight = 10
 " ======= /Unite ====== }}}¶
+    map <silent> <f9> :YRShow<CR>
+    set pastetoggle=<F7>
+set runtimepath+=~/.vim/ultisnips
+let g:UltiSnipsSnippetDirectories=["snippets"]
+
+let g:UltiSnipsExpandTrigger="<c-j>"
+"let g:UltiSnipsListSnippets="<c-tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
