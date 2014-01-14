@@ -1,3 +1,4 @@
+
 set encoding=utf-8
 " set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 10
 " ====== Bundle ====== {{{ 
@@ -26,7 +27,7 @@ set encoding=utf-8
     Bundle 'mattn/emmet-vim'
     Bundle 'terryma/vim-multiple-cursors'
     Bundle 'Lokaltog/vim-distinguished'
-    Bundle 'vim-scripts/YankRing.vim'
+    " Bundle 'vim-scripts/YankRing.vim'
     Bundle 'Raimondi/delimitMate'
     Bundle 'tpope/vim-fugitive'
     Bundle 'Valloric/YouCompleteMe'
@@ -91,12 +92,21 @@ set encoding=utf-8
       \ '' : 'S',
       \ }
 
-    let g:airline_left_sep = ''
-    let g:airline_right_sep = ''
-    let g:airline_symbols.linenr = '¶'
-    let g:airline_symbols.branch = '⎇'
-    let g:airline_symbols.paste = 'ρ'
-    let g:airline_symbols.whitespace = 'Ξ'
+    let g:airline_left_sep = ''
+    let g:airline_left_alt_sep = ''
+    let g:airline_right_sep = ''
+    let g:airline_right_alt_sep = ''
+    let g:airline_symbols.branch = ''
+    let g:airline_symbols.readonly = ''
+    let g:airline_symbols.linenr = ''
+
+
+    " let g:airline_left_sep = ''
+    " let g:airline_right_sep = ''
+    " let g:airline_symbols.linenr = '¶'
+    " let g:airline_symbols.branch = '⎇'
+    " let g:airline_symbols.paste = 'ρ'
+    " let g:airline_symbols.whitespace = 'Ξ'
     set ttimeoutlen=150
 
     " Display tabs and trailing spaces visually
@@ -304,10 +314,11 @@ let g:unite_winheight = 10
 " ======= /Unite ====== }}}¶
     map <silent> <f9> :YRShow<CR>
     set pastetoggle=<F7>
-set runtimepath+=~/.vim/ultisnips
-let g:UltiSnipsSnippetDirectories=["snippets"]
 
-let g:UltiSnipsExpandTrigger="<c-j>"
-"let g:UltiSnipsListSnippets="<c-tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+" set runtimepath+=~/.vim/ultisnips
+" let g:UltiSnipsSnippetDirectories=["snippets"]
+
+" let g:UltiSnipsExpandTrigger="<c-j>"
+" "let g:UltiSnipsListSnippets="<c-tab>"
+" let g:UltiSnipsJumpForwardTrigger="<c-j>"
+" let g:UltiSnipsJumpBackwardTrigger="<c-k>"
