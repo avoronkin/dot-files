@@ -216,7 +216,7 @@ set encoding=utf-8
 
 " ====== Formating ====== {{{
 
-    nnoremap <leader>r :%!js-beautify -j -q -f <CR>
+    nnoremap <leader>r :%!js-beautify -j -q -f - <CR>
 
 " ====== /Formating ====== }}}
 
