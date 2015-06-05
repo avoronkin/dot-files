@@ -1,6 +1,11 @@
-
 set nocompatible
+
 syntax enable
+syntax on
+set t_Co=256
+set background=dark
+colorscheme distinguished
+
 set encoding=utf8
 set fileencoding=utf8
 let mapleader=','               "Change leader to a comma because the backslash is too far away
@@ -14,23 +19,15 @@ set autoread                    "Reload files changed outside vim
 set laststatus=2
 set mouse=a
 
-set t_Co=256
-syntax on
-set background=dark
-colorscheme distinguished
 let g:syntastic_check_on_open=1
-
 let g:airline_detect_paste=1
 if !exists('g:airline_symbols')
-
     let g:airline_symbols = {}
 endif
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme = 'bubblegum'
-
 let g:airline#extensions#tabline#show_buffers = 1
-
 let g:airline_mode_map = {
       \ '__' : '-',
       \ 'n'  : 'N',
