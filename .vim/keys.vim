@@ -47,9 +47,12 @@ map <C-_> <plug>NERDCommenterToggle
 map <silent> <f4> :let NERDTreeQuitOnOpen = 1<bar>NERDTreeToggle<CR>
 map <silent> <f3> :let NERDTreeQuitOnOpen = 0<bar>NERDTreeToggle<CR>
 
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+
+"map  / <Plug>(easymotion-sn)
+"omap / <Plug>(easymotion-tn)
 nmap s <Plug>(easymotion-s2)
-map  / <Plug>(easymotion-sn)
-omap / <Plug>(easymotion-tn)
 map  n <Plug>(easymotion-next)
 map  N <Plug>(easymotion-prev)
 
@@ -62,12 +65,11 @@ map <Leader>h <Plug>(easymotion-linebackward)
 nnoremap <leader>r :<C-u>Unite -buffer-name=mru -start-insert file_mru<cr>
 nnoremap <leader>b :<C-u>Unite -no-split -buffer-name=quick-buffers -quick-match buffer<cr>
 nnoremap <leader>f :<C-u>Unite -buffer-name=files_rec -start-insert file_rec/async:!<cr>
-"nnoremap <leader>f :<C-u>Unite -no-split -buffer-name=files   -start-insert file<cr>
 nnoremap <leader>g :<C-u>Unite -buffer-name=ag grep:.<cr>
 
 nnoremap <leader>y :<C-u>Unite -no-split -buffer-name=yank    history/yank<cr>
 nnoremap <leader>m :<C-u>Unite -no-split -buffer-name=bookmarks  -quick-match  vim_bookmarks<cr>
-nnoremap <leader>; :<C-u>Unite -no-split -buffer-name=lines -start-insert line<cr>
+nnoremap <leader>; :<C-u>Unite -no-split -buffer-name=lines -start-insert line:buffers<cr>
 
 " Custom mappings for the unite buffer
 autocmd FileType unite call s:unite_settings()
