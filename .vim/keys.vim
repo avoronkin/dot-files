@@ -62,9 +62,9 @@ map <Leader>k <Plug>(easymotion-k)
 map <Leader>l <Plug>(easymotion-lineforward)
 map <Leader>h <Plug>(easymotion-linebackward)
 
-nnoremap <leader>r :<C-u>Unite -buffer-name=mru -start-insert file_mru<cr>
-nnoremap <leader>b :<C-u>Unite -no-split -buffer-name=quick-buffers -quick-match buffer<cr>
-nnoremap <leader>f :<C-u>Unite -buffer-name=files_rec -start-insert file_rec/async:!<cr>
+nnoremap <leader>r :CtrlPMRU<cr>
+nnoremap <leader>b :CtrlPBuffer<cr>
+nnoremap <leader>f :CtrlP<cr>
 nnoremap <leader>g :<C-u>Unite -buffer-name=ag grep:.<cr>
 
 nnoremap <leader>y :<C-u>Unite -no-split -buffer-name=yank    history/yank<cr>
