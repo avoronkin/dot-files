@@ -19,8 +19,8 @@ if [ -f ~/.git-prompt.sh ]; then
  PROMPT_COMMAND='__git_ps1 "\u@\h:\w" "\\\$ "'
 fi
 
-if [ -f ~/.bash_aliases ]; then
- . ~/.bash_aliases
+if [ -f ~/.aliases ]; then
+ . ~/.aliases
 fi
 
 

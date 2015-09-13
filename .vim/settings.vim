@@ -64,22 +64,35 @@ let g:syntastic_check_on_open=1
 let g:syntastic_aggregate_errors=1
 let g:syntastic_error_symbol = '✗'
 let g:syntastic_warning_symbol = '!'
-let g:syntastic_javascript_checkers = ['jshint', 'jscs']
-" JSCS
-" ---------------------------------
-function! JscsFix()
-    "Save current cursor position"
-    let l:winview = winsaveview()
-    "Pipe the current buffer (%) through the jscs -x command"
-    % ! jscs -x
-    "Restore cursor position - this is needed as piping the file"
-    "through jscs jumps the cursor to the top"
-    call winrestview(l:winview)
-endfunction
-command JscsFix :call JscsFix()
 
-"Run the JscsFix command just before the buffer is written for *.js files"
-" autocmd BufWritePre *.js,*.jsx JscsFix
+"autocmd VimEnter * call SetJsFormatter()
+autocmd VimEnter * call SetJsCheckers()
+
+augroup filetype_javascript
+    autocmd!
+    autocmd FileType javascript autocmd BufWritePre <buffer> :Esformatter
+augroup END
+
+
+function! SetJsCheckers()
+    let g:syntastic_javascript_checkers = []
+
+    if findfile('.eslintrc', '.;') != ''
+        call add(g:syntastic_javascript_checkers, 'eslint')
+    elseif findfile('.jslintrc', '.;') != ''
+        call add(g:syntastic_javascript_checkers, 'jslint')
+    endif
+
+    if findfile('.jscsrc', '.;') != ''
+        call add(g:syntastic_javascript_checkers, 'jscs')
+    endif
+endfunction
+
+"function! SetJsFormatter()
+    "if findfile('.esformatter', '.;') != ''
+        "let g:esformatter = 1
+    "endif
+"endfunction
 
 let g:airline_detect_paste=1
 if !exists('g:airline_symbols')
@@ -127,41 +140,38 @@ let NERDTreeShowHidden=1
 let NERDTreeQuitOnOpen=1
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
-let g:user_emmet_install_global = 0
-autocmd FileType html,css EmmetInstall
 
-" Save session automatically.
-let g:unite_source_session_enable_auto_save = 1
+let c='a'
+while c <= 'z'
+  exec "set <M-".c.">=\e".c
+  exec "imap \e".c." <M-".c.">"
+  let c = nr2char(1+char2nr(c))
+endw
 
-" Use the fuzzy matcher for everything
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
+set timeout ttimeoutlen=50
 
-" Use the rank sorter for everything
-call unite#filters#sorter_default#use(['sorter_rank'])
-
-let g:unite_source_history_yank_enable = 1
-
-let g:unite_source_line_enable_highlight = 1
-"if executable('ag')
-    let g:unite_source_grep_command = 'ag'
-    let g:unite_source_grep_default_opts =
-          \ '--line-numbers --nocolor --nogroup --hidden --ignore ' .
-          \  '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ' . 
-          \ '''.bzr'' --ignore ''*vendor*'' --ignore ''node_modules'' '
-    let g:unite_source_grep_recursive_opt = ''
-"endif
-"
-" Set up some custom ignores
-call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
-      \ 'ignore_pattern', join([
-      \ '\.git/',
-      \ 'tmp/',
-      \ 'node_modules/',
-      \ '*vendor*',
-      \ 'bower_components/',
-      \ '.sass-cache',
-      \ ], '\|'))
+let g:tmux_navigator_no_mappings = 1
+nnoremap <silent> <M-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <M-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <M-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <M-l> :TmuxNavigateRight<cr>
+"nnoremap <silent> {Previous-Mapping} :TmuxNavigatePrevious<cr>
 
 let g:bookmark_save_per_working_dir = 1
 let g:bookmark_auto_save = 1
 let g:bookmark_manage_per_buffer = 1
+
+if executable('ag')
+    let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
+          \ --ignore .git
+          \ --ignore node_modules
+          \ --ignore .svn
+          \ --ignore .hg
+          \ --ignore .DS_Store
+          \ --ignore "**/*.pyc"
+          \ -g ""'
+
+    let g:ctrlp_use_caching = 0
+endif
+
+let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
