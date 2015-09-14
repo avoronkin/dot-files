@@ -81,6 +81,8 @@ function! SetJsCheckers()
         call add(g:syntastic_javascript_checkers, 'eslint')
     elseif findfile('.jslintrc', '.;') != ''
         call add(g:syntastic_javascript_checkers, 'jslint')
+    elseif findfile('.jshintrc', '.;') != ''
+        call add(g:syntastic_javascript_checkers, 'jshint')
     endif
 
     if findfile('.jscsrc', '.;') != ''
