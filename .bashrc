@@ -1,6 +1,10 @@
 
 #[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
+export TERM="xterm-256color"
+export VISUAL=vim
+export EDITOR="$VISUAL"
+
 if [ -f ~/.git-completion.sh ]; then
  source ~/.git-completion.sh
 fi
