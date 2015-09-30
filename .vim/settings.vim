@@ -20,6 +20,7 @@ set autoread                    "Reload files changed outside vim
 set laststatus=2
 
 set mouse=a
+set ttymouse=xterm2
 
 set ttimeoutlen=50
 set list listchars=tab:>-,trail:·,eol:¶
