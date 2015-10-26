@@ -172,6 +172,7 @@ if executable('ag')
           \ --ignore .hg
           \ --ignore .DS_Store
           \ --ignore "**/*.pyc"
+          \ --ignore "**/*.min.js"
           \ -g ""'
 
     let g:ctrlp_use_caching = 0
