@@ -42,8 +42,8 @@ nmap <Leader><space> :set list!<CR>
 "Toggle comments with ctrl-/
 map <C-_> <plug>NERDCommenterToggle
 
-map <silent> <f4> :let NERDTreeQuitOnOpen = 1<bar>NERDTreeToggle<CR>
-map <silent> <f3> :let NERDTreeQuitOnOpen = 0<bar>NERDTreeToggle<CR>
+"map <silent> <f4> :let NERDTreeQuitOnOpen = 1<bar>NERDTreeToggle<CR>
+"map <silent> <f3> :let NERDTreeQuitOnOpen = 0<bar>NERDTreeToggle<CR>
 
 nmap s <Plug>(easymotion-s2)
 map  n <Plug>(easymotion-next)

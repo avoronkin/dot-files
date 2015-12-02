@@ -134,14 +134,14 @@ set hidden
 autocmd BufWinLeave .* mkview
 autocmd BufWinEnter .* silent loadview
 
-let NERDTreeBookmarksFile=expand("$HOME/.vim/NERDTreeBookmarks")
-    " Show the bookmarks table on startup
-let NERDTreeShowBookmarks=1
-let NERDTreeDirArrows=0
-let NERDChristmasTree =1
-let NERDTreeShowHidden=1 
-let NERDTreeQuitOnOpen=1
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+"let NERDTreeBookmarksFile=expand("$HOME/.vim/NERDTreeBookmarks")
+    "" Show the bookmarks table on startup
+"let NERDTreeShowBookmarks=1
+"let NERDTreeDirArrows=0
+"let NERDChristmasTree =1
+"let NERDTreeShowHidden=1 
+"let NERDTreeQuitOnOpen=1
+"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 
 let c='a'
