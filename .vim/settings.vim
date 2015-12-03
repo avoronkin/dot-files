@@ -179,3 +179,4 @@ if executable('ag')
 endif
 
 let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+let g:netrw_liststyle = 3
